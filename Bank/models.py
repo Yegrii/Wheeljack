@@ -28,3 +28,30 @@ class Customer:
 # get_balance(self): метод, возвращающий текущий баланс счета.
 # get_account_number(self): метод, возвращающий номер счета.
 # get_owner(self): метод, возвращающий владельца счета.
+
+class BankAccount:
+    # конструктор, принимающий номер счета, текущий баланс и владельца счета.
+    def __init__(self, account_number, balance, owner) -> None:
+        self.account_number = account_number
+        self.balance = balance
+        self.owner = owner
+
+    def deposit(self, amount):
+        # метод, принимающий сумму, которую нужно внести на счет. Он должен увеличить баланс счета на эту сумму.
+        pass
+
+    def withdraw(self, amount):
+        # метод, принимающий сумму, которую нужно снять со счета. Он должен уменьшить баланс счета на эту сумму.
+        pass
+
+    def get_balance(self):
+        # метод, возвращающий текущий баланс счета.
+        pass
+
+    def get_account_number(self):
+        # метод, возвращающий номер счета.
+        pass
+
+    def get_owner(self):
+        # метод, возвращающий владельца счета.
+        pass
