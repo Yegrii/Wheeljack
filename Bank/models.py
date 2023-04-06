@@ -38,20 +38,20 @@ class BankAccount:
 
     def deposit(self, amount):
         # метод, принимающий сумму, которую нужно внести на счет. Он должен увеличить баланс счета на эту сумму.
-        pass
+        self.balance += amount
 
     def withdraw(self, amount):
         # метод, принимающий сумму, которую нужно снять со счета. Он должен уменьшить баланс счета на эту сумму.
-        pass
+        self.balance -= amount
 
     def get_balance(self):
         # метод, возвращающий текущий баланс счета.
-        pass
+        return self.balance
 
     def get_account_number(self):
         # метод, возвращающий номер счета.
-        pass
+        return self.account_number
 
     def get_owner(self):
         # метод, возвращающий владельца счета.
-        pass
+        return self.owner
