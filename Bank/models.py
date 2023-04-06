@@ -6,25 +6,53 @@
 # Затем создайте класс Customer, который будет иметь атрибуты name, address и phone_number для хранения персональной информации клиента. 
 # Класс Customer также должен иметь атрибут accounts, который будет хранить список всех банковских счетов, открытых клиентом в банке.
 
+# Давайте добавим класс Bank из нашего предыдущего задания и реализуем методы для работы с банковскими счетами, 
+# такие как открытие нового счета, закрытие существующего счета, а также поиск счета по номеру.
+
+# Добавьте метод open_account в класс Bank, который будет создавать новый банковский счет с начальным балансом и владельцем счета.
+
+# Добавьте метод close_account в класс Bank, который будет закрывать существующий банковский счет.
+
+# Добавьте метод find_account в класс Bank, который будет находить банковский счет по его номеру.
+
+# Добавьте метод get_total_assets в класс Bank, который будет возвращать общую сумму всех денег на всех счетах в банке.
+
+# Добавьте метод transfer_money в класс BankAccount, который будет переводить деньги со счета одного владельца на счет другого владельца.
+
 class Bank:
     def __init__(self, name, customers) -> None:
         self.name = name
         self.customers = customers
+        self.accounts = []
 
-    def open_account(self):
-        pass
+    def open_account(self, account_number, balance, owner):
+        # метод, создающий новый банковский счет и добавляющий его в список счетов банка
+        new_account = BankAccount(account_number, balance, owner)
+        self.accounts.append(new_account)
+        return new_account
 
-    def close_account(self):
-        pass
+    def close_account(self, account_number):
+        # метод, удаляющий существующий банковский счет из списка счетов банка
+        for account in self.accounts:
+            if account.get_account_number() == account_number:
+                self.accounts.remove(account)
+                return True
+        return False
 
-    def find_account(self):
-        pass
+    def find_account(self, account_number):
+        # метод, находящий банковский счет по его номеру.
+        for account in self.accounts:
+            if account.get_account_number() == account_number:
+                return account
+        return None
 
     def get_total_assets(self):
-        pass
+        # метод, возвращающий общую сумму всех денег на всех счетах в банке.
+        total = 0
+        for account in self.accounts:
+            total += account.get_balance()
+        return total
 
-    def transfer_money(self):
-        pass
 
 
 class Customer:
@@ -71,15 +99,12 @@ class BankAccount:
         # метод, возвращающий владельца счета.
         return self.owner
     
-# Давайте добавим класс Bank из нашего предыдущего задания и реализуем методы для работы с банковскими счетами, 
-# такие как открытие нового счета, закрытие существующего счета, а также поиск счета по номеру.
-
-# Добавьте метод open_account в класс Bank, который будет создавать новый банковский счет с начальным балансом и владельцем счета.
-
-# Добавьте метод close_account в класс Bank, который будет закрывать существующий банковский счет.
-
-# Добавьте метод find_account в класс Bank, который будет находить банковский счет по его номеру.
-
-# Добавьте метод get_total_assets в класс Bank, который будет возвращать общую сумму всех денег на всех счетах в банке.
-
-# Добавьте метод transfer_money в класс BankAccount, который будет переводить деньги со счета одного владельца на счет другого владельца.
+    def transfer_money(self, recipient_account, amount):
+        # метод, переводящий деньги со счета одного владельца на счет другого владельца.
+        if self.balance >= amount:
+            self.withdraw(amount)
+            recipient_account.deposit(amount)
+            return True
+        else:
+            return False
+    
