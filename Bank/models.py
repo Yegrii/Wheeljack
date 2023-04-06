@@ -11,6 +11,21 @@ class Bank:
         self.name = name
         self.customers = customers
 
+    def open_account(self):
+        pass
+
+    def close_account(self):
+        pass
+
+    def find_account(self):
+        pass
+
+    def get_total_assets(self):
+        pass
+
+    def transfer_money(self):
+        pass
+
 
 class Customer:
     def __init__(self, name, address, phone_number) -> None:
