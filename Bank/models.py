@@ -58,14 +58,14 @@ class Bank:
         return total
 
 
-
 class Customer:
     def __init__(self, name, address, phone_number) -> None:
         self.name = name
         self.address = address
         self.phone_number = phone_number
 
-# Отлично, начнем проект с банковской системы. 
+
+# Отлично, начнем проект с банковской системы.
 # Первое задание, которое мне приходит в голову, это создать класс BankAccount, 
 # который будет представлять банковский счет. Класс должен иметь следующие методы:
 
@@ -101,7 +101,7 @@ class BankAccount:
     def get_owner(self):
         # метод, возвращающий владельца счета.
         return self.owner
-    
+
     def transfer_money(self, recipient_account, amount):
         # метод, переводящий деньги со счета одного владельца на счет другого владельца.
         if self.balance >= amount:
@@ -110,4 +110,16 @@ class BankAccount:
             return True
         else:
             return False
-    
+
+
+account1 = Customer('John', '123 Main St', '555-1234')
+account2 = Customer('Jane', '456 Main St', '555-5678')
+account3 = Customer('Bob', '789 Main St', '555-9012')
+
+bank = Bank('My Bank', [account1, account2, account3])
+
+account1 = bank.open_account('123-456', 1000, account1)
+account2 = bank.open_account('456-789', 2000, account2)
+account3 = bank.open_account('789-012', 3000, account3)
+
+print(bank.get_total_assets())
